@@ -2,16 +2,16 @@ package com.zt.test.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.zt.entiy.TreeNode;
 import com.zt.test.po.Test;
 import com.zt.test.query.TestQuery;
 import com.zt.test.service.TestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author ZT
@@ -48,5 +48,10 @@ public class TestController {
     public String test2(){
         int i = 1/0;
         return "Hello World";
+    }
+
+    @GetMapping("queryDeptNode")
+    public List<TreeNode> queryTreeNode(String id) {
+        return service.queryTreeNode(id);
     }
 }

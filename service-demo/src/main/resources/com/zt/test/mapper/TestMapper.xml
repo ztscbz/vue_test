@@ -5,5 +5,8 @@
     <select id="queryTest" parameterType="com.zt.test.query.TestQuery" resultType="com.zt.test.po.Test">
         select * from test
     </select>
+    <select id="queryTreeNode" resultType="com.zt.entiy.TreeNode">
+
+    </select>
 
 </mapper>

@@ -1,5 +1,6 @@
 package com.zt.test.mapper;
 
+import com.zt.entiy.TreeNode;
 import com.zt.test.po.Test;
 import com.zt.test.query.TestQuery;
 
@@ -12,4 +13,6 @@ import java.util.List;
 public interface TestMapper {
 
     List<Test> queryTest(TestQuery param);
+
+    List<TreeNode> queryTreeNode();
 }
