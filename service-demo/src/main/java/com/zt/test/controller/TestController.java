@@ -30,4 +30,23 @@ public class TestController {
     public PageInfo<Test> queryTest(@RequestBody TestQuery param) {
         return service.queryTest(param);
     }
+
+    @ApiOperation(value = "测试无返回值")
+    @PostMapping("test")
+    public void test(){
+        System.out.println("hello");
+    }
+
+    @ApiOperation(value = "测试有返回值")
+    @PostMapping("test1")
+    public String test1(){
+       return "Hello World";
+    }
+
+    @ApiOperation(value = "测试错误")
+    @PostMapping("test2")
+    public String test2(){
+        int i = 1/0;
+        return "Hello World";
+    }
 }
