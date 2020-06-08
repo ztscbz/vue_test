@@ -7,6 +7,7 @@ import com.zt.test.mapper.TestMapper;
 import com.zt.test.po.Test;
 import com.zt.test.query.TestQuery;
 import com.zt.test.service.TestService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,15 @@ public class TestServiceImpl implements TestService {
     @Override
     public List<TreeNode> queryTreeNode(String id) {
         List<TreeNode> arr = mapper.queryTreeNode();
-        List<TreeNode> root = arr.stream().filter(e -> Objects.equals(id, e.getId())).collect(Collectors.toList());//获取根
+        if(StringUtils.isBlank(id)){
+            for (TreeNode treeNode : arr) {
+                if(StringUtils.equals(treeNode.getParentId(),null)){
+                    id = treeNode.getId();
+                }
+            }
+        }
+        String finalId = id;
+        List<TreeNode> root = arr.stream().filter(e -> Objects.equals(finalId, e.getId())).collect(Collectors.toList());//获取根
         for (TreeNode perm : root) {
             findChildPerms(perm, arr);
         }
@@ -52,6 +61,8 @@ public class TestServiceImpl implements TestService {
                 findChildPerms(perm, allPerm);
             }
         }
+
+
 
     }
 }
