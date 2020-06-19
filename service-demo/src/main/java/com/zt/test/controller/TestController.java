@@ -6,8 +6,10 @@ import com.zt.entiy.TreeNode;
 import com.zt.test.po.Test;
 import com.zt.test.query.TestQuery;
 import com.zt.test.service.TestService;
+import com.zt.util.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,5 +55,22 @@ public class TestController {
     @GetMapping("queryDeptNode")
     public List<TreeNode> queryTreeNode(String id) {
         return service.queryTreeNode(id);
+    }
+
+    @GetMapping("setValue")
+    @ApiOperation("设置字符串缓存")
+    public String setValue(String str){
+        if(StringUtils.isBlank(str)){
+            return str;
+        }
+
+        RedisUtil.set(str,"zt" + str);
+        return "zt" + str;
+    }
+
+    @GetMapping("getValue")
+    @ApiOperation("取出字符串缓存")
+    public String getValue(String str){
+        return (String) RedisUtil.get(str);
     }
 }
