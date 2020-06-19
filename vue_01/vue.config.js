@@ -29,7 +29,7 @@ module.exports = {
         /* 允许跨域 */
         changeOrigin: true,
         pathRewrite: {
-          '^/api':''
+          '^/api': ''
         }
       },
     },
