@@ -16,7 +16,19 @@ const routes = [
   {
     path: '/console',
     name: 'Console',
-    component: () => import('../views/layout/index')
+    component: () => import('../views/main/index'),
+    children:[
+      {
+        path: '/about',
+        name: 'About',
+        component: () => import('../views/nav01/About.vue')
+      },
+      {
+        path: '/about1',
+        name: 'About1',
+        component: () => import('../views/nav01/About1.vue')
+      },
+    ]
   }
 ]
 
