@@ -1,7 +1,7 @@
 <template>
   <el-container style="height: 2000px; border: 1px solid #eee">
     <el-header>
-      <h1 style="text-align: left;line-height: 100%">管理系统</h1>
+      <h1>管理系统</h1>
     </el-header>
 
     <el-container>
@@ -10,6 +10,7 @@
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-message"></i>导航一</template>
             <el-menu-item-group>
+              <el-menu-item index="blog">博文</el-menu-item>
               <el-menu-item index="about">关于</el-menu-item>
               <el-menu-item index="about1">关于1</el-menu-item>
             </el-menu-item-group>
@@ -75,6 +76,11 @@
 </script>
 
 <style scoped>
+  h1 {
+    text-align: left;
+    height: 40px;
+    line-height: 100%;
+  }
   .el-header {
     background-color: #B3C0D1;
     color: #333;

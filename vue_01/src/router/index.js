@@ -18,10 +18,21 @@ const routes = [
     component: () => import('../views/Login.vue')
   },
   {
+    path: '/display',
+    name: 'Display',
+    component: () => import('../views/nav01/Display.vue')
+  },
+  {
     path: '/console',
     name: 'Console',
-    component: () => import('../views/main/index'),
+    component: () => import('../views/main/Index'),
     children:[
+      {
+        path: '/blog',
+        name: 'Blog',
+        component: () => import('../views/nav01/Index.vue')
+      },
+
       {
         path: '/about',
         name: 'About',
