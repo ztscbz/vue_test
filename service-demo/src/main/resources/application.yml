@@ -35,6 +35,12 @@ spring:
     host: 192.168.0.188
     port: 6379
     timeout: 5000
+#minio配置
+minio:
+  password: 123！@#
+  port: 9000
+  url: http://192.168.0.188
+  user: ztsc
 
 mybatis:
   configuration:

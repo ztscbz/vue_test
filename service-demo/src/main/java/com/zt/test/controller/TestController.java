@@ -8,10 +8,12 @@ import com.zt.test.query.TestQuery;
 import com.zt.test.service.TestService;
 import com.zt.util.RedisUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -72,5 +74,12 @@ public class TestController {
     @ApiOperation("取出字符串缓存")
     public String getValue(String str){
         return (String) RedisUtil.get(str);
+    }
+
+    @PostMapping("upload")
+    @ApiOperation(value = "minio通用文件上传")
+    @ApiImplicitParam(name="file",dataType="__file",required=true,value="图片流文件")
+    public String upload(MultipartFile file){
+        return service.upload(file);
     }
 }

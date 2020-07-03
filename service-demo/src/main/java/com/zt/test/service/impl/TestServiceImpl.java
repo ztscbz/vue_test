@@ -7,11 +7,16 @@ import com.zt.test.mapper.TestMapper;
 import com.zt.test.po.Test;
 import com.zt.test.query.TestQuery;
 import com.zt.test.service.TestService;
+import com.zt.util.MinioUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -49,6 +54,20 @@ public class TestServiceImpl implements TestService {
             findChildPerms(perm, arr);
         }
         return root;
+    }
+
+    @Override
+    public String upload(MultipartFile file) {
+        String originalFilename = file.getOriginalFilename();
+        String last = originalFilename.substring(originalFilename.lastIndexOf("."));
+        LocalDate localDate = LocalDate.now();
+        //设置minio桶路径
+        String bucketName = String.valueOf(localDate.getYear());
+        //设置资源路径
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM");
+        String resourceName = localDate.format(dtf).concat("/").concat(String.valueOf(new Date().getTime())).concat(last);
+        MinioUtil.upload(bucketName,file, resourceName);
+        return bucketName.concat("/").concat(resourceName);
     }
 
     private void findChildPerms(TreeNode treeNode, List<TreeNode> allPerm) {
