@@ -28,6 +28,7 @@ public class MyException implements ResponseBodyAdvice {
     @ExceptionHandler(Exception.class)
     public Result<?> myException(Exception e){
         log.info("###全局捕获异常###,error:{}",e.getMessage());
+        e.printStackTrace();
         Result<Object> result = new Result<>(null);
         result.resultException(e);
         return result;
