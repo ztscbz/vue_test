@@ -38,9 +38,7 @@ public class MyException implements ResponseBodyAdvice {
     public boolean supports(MethodParameter methodParameter, Class aClass) {
         String name = methodParameter.getMethod().getName();
         // 不过滤掉swagger
-        if("uiConfiguration".equals(name)) return false;
-        if("swaggerResources".equals(name)) return false;
-        if("getDocumentation".equals(name)) return false;
+        if("uiConfiguration".equals(name) || "swaggerResources".equals(name) || "getDocumentation".equals(name)) return false;
         return true;
     }
 
