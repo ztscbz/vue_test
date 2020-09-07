@@ -14,7 +14,7 @@ import java.util.List;
 public class Test8 {
     public static void main(String[] args) {
         List<String> arr = new ArrayList<>();
-        arr.add("11");
+        arr.add("xxx39.97.72.5");
         arr.add("22");
         arr.add("33");
         String join = StringUtils.join(arr, ",");
