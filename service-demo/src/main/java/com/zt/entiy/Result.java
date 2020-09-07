@@ -1,12 +1,14 @@
 package com.zt.entiy;
 
+import lombok.experimental.Accessors;
+
 /**
  * @ClassName: MyExcetionVo
  * @Description:
  * @author: ZT
  * @date: 2020/4/16 13:36
  */
-
+@Accessors(chain = true)
 public class Result<T> {
 
     private String msg = "success";

@@ -2,7 +2,7 @@ package com.zt.test.service;
 
 import com.github.pagehelper.PageInfo;
 import com.zt.entiy.TreeNode;
-import com.zt.test.po.Test;
+import com.zt.test.po.TestVo;
 import com.zt.test.query.TestQuery;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,7 +21,7 @@ public interface TestService {
      * @Param  @param param
      * @return com.github.pagehelper.PageInfo<com.zt.test.po.Test>
     */
-    PageInfo<Test> queryTest(TestQuery param);
+    PageInfo<TestVo> queryTest(TestQuery param);
 
     /**
      * @author: ZT
@@ -42,4 +42,5 @@ public interface TestService {
      * @return: java.lang.String
      */
     String upload(MultipartFile file);
+
 }
