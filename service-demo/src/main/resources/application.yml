@@ -41,6 +41,12 @@ minio:
   port: 9000
   url: http://192.168.0.188
   user: ztsc
+#    rabbitmq:
+#        host: 127.0.0.1
+#        password: guest
+#        port: 56721
+#        username: guest
+#        virtual-host: /
 
 mybatis:
   configuration:
