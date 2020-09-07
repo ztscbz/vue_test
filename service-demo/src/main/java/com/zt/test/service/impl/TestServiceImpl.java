@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zt.entiy.TreeNode;
 import com.zt.test.mapper.TestMapper;
-import com.zt.test.po.Test;
+import com.zt.test.po.TestVo;
 import com.zt.test.query.TestQuery;
 import com.zt.test.service.TestService;
 import com.zt.util.MinioUtil;
@@ -32,7 +32,7 @@ public class TestServiceImpl implements TestService {
     private TestMapper mapper;
 
     @Override
-    public PageInfo<Test> queryTest(TestQuery param) {
+    public PageInfo<TestVo> queryTest(TestQuery param) {
         PageHelper.startPage(param.getPageNum(), param.getPageSize());
         PageInfo info = new PageInfo(mapper.queryTest(param));
         return info;
