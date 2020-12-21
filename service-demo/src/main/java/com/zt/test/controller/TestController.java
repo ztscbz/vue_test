@@ -5,7 +5,6 @@ import com.zt.config.RabbitMqAnnexConfig;
 import com.zt.entiy.TreeNode;
 import com.zt.group.Add;
 import com.zt.group.Update;
-import com.zt.m08day07.Test4;
 import com.zt.test.po.TestVo;
 import com.zt.test.query.TestQuery;
 import com.zt.test.service.TestService;
@@ -117,7 +116,7 @@ public class TestController {
         System.out.println(name);
         File file1= new File(originalFilename);
         FileUtils.copyInputStreamToFile(file.getInputStream(),file1);
-        Test4.getVideoPic(file1,"D:\\pic\\video.jpg");
+//        Test4.getVideoPic(file1,"D:\\pic\\video.jpg");
         return "1111";
     }
 
@@ -126,7 +125,7 @@ public class TestController {
     @ApiImplicitParam(name="file",dataType="__file",required=true,value="图片流文件")
     public String getPicUrl(MultipartFile file) throws IOException {
         String url = "D:\\pic\\"+ System.currentTimeMillis() + ".jpg";
-        Test4.getVideoPic1(file.getInputStream(),url);
+//        Test4.getVideoPic1(file.getInputStream(),url);
         return url;
     }
 
